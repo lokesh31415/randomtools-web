@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "randomtoolsfree": {
+      "hosting": {
+        "randomtools": [
+          "randomtoolsfree"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "randomtools": "randomtoolsfree"
+  }
+}
