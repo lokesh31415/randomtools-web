@@ -1,0 +1,42 @@
+@mixin create-palatte-variables($palatte-map, $prefix, $suffix) {
+  @each $shade, $color in $palatte-map {
+    @if $prefix == null {
+      --#{$shade}-#{$suffix}: #{$color};
+    } @else if $suffix == null {
+      --#{$prefix}-#{$shade}: #{$color};
+    } @else {
+      --#{$prefix}-#{$shade}-#{$suffix}: #{$color};
+    }
+  }
+}
+
+@mixin create_theme_classes($themes-map) {
+  // go through each theme and generate css class for each.
+  @each $theme, $theme-val in $themes-map {
+    .theme-#{$theme} {
+      // go thorugh each shades (primary-colors, secondary-colors, other-colors)
+      // generate css variables for each.
+      @each $palatte-name, $palatte-map in $theme-val {
+        @if $palatte-name == "primary-colors" {
+          @include create-palatte-variables(
+            $palatte-map,
+            "primary-color",
+            null
+          );
+        }
+        @if $palatte-name == "secondary-colors" {
+          @include create-palatte-variables(
+            $palatte-map,
+            "secondary-color",
+            null
+          );
+        }
+        @if $palatte-name == "other-colors" {
+          @include create-palatte-variables($palatte-map, null, "color");
+        }
+      }
+      // end of shade loop
+    }
+    // end of class loop
+  }
+}

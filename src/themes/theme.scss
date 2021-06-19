@@ -1,0 +1,6 @@
+@use "./abstracts/palattes";
+@use "./abstracts/mixins";
+@use "./abstracts/variables";
+@use "./abstracts/functions";
+
+@include mixins.create_theme_classes(palattes.$themes);
