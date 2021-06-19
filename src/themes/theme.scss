@@ -2,5 +2,7 @@
 @use "./abstracts/mixins";
 @use "./abstracts/variables";
 @use "./abstracts/functions";
+@use "./base/base";
+@use "./layout";
 
 @include mixins.create_theme_classes(palattes.$themes);

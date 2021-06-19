@@ -1,25 +1,5 @@
 .root {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
   min-height: 100vh;
   width: 100%;
-  margin: 0 auto;
   background-color: var(--background-color);
-}
-
-.intro {
-  font-size: 5rem;
-  color: #939b62;
-}
-
-.coming-soon {
-  font-size: 2rem;
-  margin: 5px;
-  background-color: #ffb26b;
-  color: #fff;
-  border-radius: 50px;
-  padding: 1rem 10rem;
-  box-shadow: 0px 4px 4px rgba($color: #000000, $alpha: 0.4);
 }
