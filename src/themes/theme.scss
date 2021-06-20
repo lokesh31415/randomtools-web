@@ -4,5 +4,10 @@
 @use "./abstracts/functions";
 @use "./base/base";
 @use "./layout";
+@use "./abstracts/variables" as v;
 
 @include mixins.create_theme_classes(palattes.$themes);
+
+:root {
+  @include v.css-variables();
+}

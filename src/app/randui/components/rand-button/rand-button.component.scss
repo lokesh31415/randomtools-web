@@ -1,0 +1,37 @@
+.rand-btn {
+  &,
+  &:visited,
+  &:link {
+    text-decoration: none;
+    padding: 0.625em 3em;
+    font-size: inherit;
+    position: relative;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0px 0.2rem 0.4rem rgba($color: #000000, $alpha: 0.2);
+    color: inherit;
+    transform: translateY(0);
+    transition: all 0.2s;
+  }
+
+  &:active,
+  &:focus {
+    transform: translateY(0);
+    outline: none;
+  }
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0px 0.4rem 0.8rem rgba($color: #000000, $alpha: 0.2);
+  }
+}
+
+.rand-primary-btn {
+  background-color: var(--primary-color-500);
+}
+.rand-secondary-btn {
+  background-color: var(--secondary-color-500);
+}
+.rand-danger-btn {
+  background-color: var(--danger-color);
+}

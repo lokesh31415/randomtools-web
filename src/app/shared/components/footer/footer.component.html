@@ -1,4 +1,9 @@
 <footer class="footer__root">
+  <ng-container *ngTemplateOutlet="fsvgback"></ng-container>
+</footer>
+
+<!-- background svg -->
+<ng-template #fsvgback>
   <svg
     class="footer-background"
     preserveAspectRatio="none"
@@ -11,7 +16,6 @@
         fill-rule="evenodd"
         clip-rule="evenodd"
         d="M1 8L160.917 50C320.833 92 640.667 176 960.5 176C1280.33 176 1600.17 92 1760.08 50L1920 8V368H1760.08C1600.17 368 1280.33 368 960.5 368C640.667 368 320.833 368 160.917 368H1V8Z"
-        fill="#FFB26B"
       />
     </g>
     <defs>
@@ -50,4 +54,4 @@
       </filter>
     </defs>
   </svg>
-</footer>
+</ng-template>
