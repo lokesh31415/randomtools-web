@@ -1,5 +1,50 @@
 <div class="page-grid screen-root home">
   <app-header class="header"></app-header>
-  <main style="min-height: 80vh"></main>
+  <main class="home__main">
+    <div class="wave-cotainer">
+      <ng-container
+        *ngTemplateOutlet="middleWaveUp; context: {}"
+      ></ng-container>
+      <ng-container
+        *ngTemplateOutlet="middleWaveDown; context: {}"
+      ></ng-container>
+    </div>
+  </main>
   <app-footer class="footer"></app-footer>
 </div>
+
+<ng-template #middleWaveUp>
+  <svg
+    class="middlewave middlewave__up"
+    preserveAspectRatio="none"
+    viewBox="0 0 1920 518"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      fill-rule="evenodd"
+      clip-rule="evenodd"
+      d="M0 115L53 134C107 153 213 192 320 240C427 288 533 345 640 326C747 307 853 211 960 182C1067 153 1173 192 1280 240C1387 288 1493 345 1600 307C1707 268 1813 134 1867 67L1920 0V518H1867C1813 518 1707 518 1600 518C1493 518 1387 518 1280 518C1173 518 1067 518 960 518C853 518 747 518 640 518C533 518 427 518 320 518C213 518 107 518 53 518H0V115Z"
+      fill="#FFB26B"
+      fill-opacity="0.1"
+    />
+  </svg>
+</ng-template>
+
+<ng-template #middleWaveDown>
+  <svg
+    class="middlewave middlewave__down"
+    preserveAspectRatio="none"
+    viewBox="0 0 1920 324"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      fill-rule="evenodd"
+      clip-rule="evenodd"
+      d="M0 216L64 198C128 180 256 144 384 144C512 144 640 180 768 180C896 180 1024 144 1152 138C1280 132 1408 156 1536 192C1664 228 1792 276 1856 300L1920 324V0H1856C1792 0 1664 0 1536 0C1408 0 1280 0 1152 0C1024 0 896 0 768 0C640 0 512 0 384 0C256 0 128 0 64 0H0V216Z"
+      fill="#FFB26B"
+      fill-opacity="0.1"
+    />
+  </svg>
+</ng-template>

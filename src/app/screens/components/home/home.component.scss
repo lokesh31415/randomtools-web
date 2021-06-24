@@ -1,4 +1,24 @@
 .home {
   width: 100%;
-  min-height: 100vh;
+  position: relative;
+  &__main {
+    min-height: 200vh;
+  }
+}
+
+.wave-cotainer {
+  position: absolute;
+  width: 100%;
+  top: 60vh;
+}
+
+.middlewave {
+  width: 100%;
+  // &__up {
+  //   top: 50vh;
+  // }
+
+  &__down {
+    margin-top: -3.5px;
+  }
 }
