@@ -1,4 +1,4 @@
-@mixin create-palatte-variables($palatte-map, $prefix, $suffix) {
+@mixin generate-palatte-variables($palatte-map, $prefix, $suffix) {
   @each $shade, $color in $palatte-map {
     @if $prefix == null {
       --#{$shade}-#{$suffix}: #{$color};
@@ -10,33 +10,62 @@
   }
 }
 
-@mixin create_theme_classes($themes-map) {
+@mixin generate_theme_classes($themes-map) {
   // go through each theme and generate css class for each.
   @each $theme, $theme-val in $themes-map {
     .theme-#{$theme} {
       // go thorugh each shades (primary-colors, secondary-colors, other-colors)
       // generate css variables for each.
       @each $palatte-name, $palatte-map in $theme-val {
-        @if $palatte-name == "primary-colors" {
-          @include create-palatte-variables(
-            $palatte-map,
-            "primary-color",
-            null
-          );
-        }
-        @if $palatte-name == "secondary-colors" {
-          @include create-palatte-variables(
-            $palatte-map,
-            "secondary-color",
-            null
-          );
-        }
         @if $palatte-name == "other-colors" {
-          @include create-palatte-variables($palatte-map, null, "color");
+          @include generate-palatte-variables($palatte-map, null, "color");
+        } @else {
+          @include generate-palatte-variables(
+            $palatte-map,
+            $palatte-name + "-color",
+            null
+          );
         }
       }
       // end of shade loop
     }
     // end of class loop
   }
+}
+
+// gradient generators
+
+@mixin generate-gradient-classes($palattes...) {
+  @each $palatte in $palattes {
+    .gradient-#{$palatte},
+    .gradient-#{$palatte}:before {
+      @include gradientBg(
+        var(--#{$palatte}-color-500),
+        var(--#{$palatte}-color-600),
+        180deg
+      );
+    }
+  }
+}
+
+@mixin gradientBg($startColor, $endColor, $direction) {
+  background: $startColor;
+  background: -moz-linear-gradient(
+    $direction,
+    $startColor 0%,
+    $endColor 80%,
+    $endColor 100%
+  );
+  background: -webkit-linear-gradient(
+    $direction,
+    $startColor 0%,
+    $endColor 80%,
+    $endColor 100%
+  );
+  background: linear-gradient(
+    $direction,
+    $startColor 0%,
+    $endColor 80%,
+    $endColor 100%
+  );
 }

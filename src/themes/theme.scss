@@ -2,11 +2,14 @@
 @use "./abstracts/mixins";
 @use "./abstracts/variables";
 @use "./abstracts/functions";
-@use "./base/base";
-@use "./layout";
 @use "./abstracts/variables" as v;
+@use "./base/base";
+@use "./base/typography";
+@use "./base/animations";
+@use "./layout";
 
-@include mixins.create_theme_classes(palattes.$themes);
+@include mixins.generate_theme_classes(palattes.$themes);
+@include mixins.generate-gradient-classes(primary, secondary, accent, danger);
 
 :root {
   @include v.css-variables();

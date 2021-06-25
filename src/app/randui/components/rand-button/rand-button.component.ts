@@ -14,7 +14,7 @@ export class RandButtonComponent implements OnInit {
   ngOnInit(): void {}
 
   getColorClazz() {
-    return `rand-${this.color}-btn`;
+    return `rand-${this.color}-btn gradient-${this.color}`;
   }
 
   onButtonClick(event: any) {

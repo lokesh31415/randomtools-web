@@ -1,14 +1,26 @@
 <div class="page-grid screen-root home">
   <app-header class="header"></app-header>
-  <main class="home__main">
-    <div class="wave-cotainer">
-      <ng-container
-        *ngTemplateOutlet="middleWaveUp; context: {}"
-      ></ng-container>
-      <ng-container
-        *ngTemplateOutlet="middleWaveDown; context: {}"
-      ></ng-container>
-    </div>
+  <div class="wave-cotainer">
+    <ng-container *ngTemplateOutlet="middleWaveUp; context: {}"></ng-container>
+    <ng-container
+      *ngTemplateOutlet="middleWaveDown; context: {}"
+    ></ng-container>
+  </div>
+  <main class="home__main page-content">
+    <section class="section hero-section">
+      <div class="hero-left">
+        <div class="hero-title">
+          <h2 class="secondary semi-bold">ALL TOOLS YOU NEED IN ONE PLACE</h2>
+          <h2 class="secondary semi-bold">FOR FREE</h2>
+        </div>
+        <rand-button color="secondary" rand-rounded class="hero-button"
+          >Try Now</rand-button
+        >
+      </div>
+      <div class="hero-right">
+        <ng-container *ngTemplateOutlet="heroImage; context: {}"></ng-container>
+      </div>
+    </section>
   </main>
   <app-footer class="footer"></app-footer>
 </div>
@@ -47,4 +59,8 @@
       fill-opacity="0.1"
     />
   </svg>
+</ng-template>
+
+<ng-template #heroImage>
+  <img src="assets/svgs/hero.svg" alt="" />
 </ng-template>

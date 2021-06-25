@@ -4,7 +4,7 @@ $themes: (
   // light theme
   light:
     (
-      "primary-colors": (
+      "primary": (
         50: "#fffbf8",
         100: "#fff7f0",
         200: "#ffecda",
@@ -16,7 +16,7 @@ $themes: (
         800: "#996b40",
         900: "#7d5734",
       ),
-      "secondary-colors": (
+      "secondary": (
         50: "#fafaf7",
         100: "#f4f5ef",
         200: "#e4e6d8",
@@ -27,6 +27,30 @@ $themes: (
         700: "#6e744a",
         800: "#585d3b",
         900: "#484c30",
+      ),
+      "danger": (
+        50: "#fff8f6",
+        100: "#fff2ee",
+        200: "#ffded4",
+        300: "#ffcabb",
+        400: "#ffa387",
+        500: "#ff7b54",
+        600: "#e66f4c",
+        700: "#bf5c3f",
+        800: "#994a32",
+        900: "#7d3c29",
+      ),
+      "accent": (
+        50: "#f5fcfc",
+        100: "#ecfafa",
+        200: "#cff1f2",
+        300: "#b2e9e9",
+        400: "#79d9d9",
+        500: "#3fc8c9",
+        600: "#39b4b5",
+        700: "#2f9697",
+        800: "#267879",
+        900: "#1f6262",
       ),
       "other-colors": (
         "background": "#fffbf8",
@@ -42,7 +66,7 @@ $themes: (
         "border": "#D6D6D6",
         "disabled": "#D6D6D6",
         "disabled-light": "rgba(214, 214,214, 0.65)",
-        "danger": "#FF7B54",
+        "danger": var(--danger-color-500),
         "home-header-background":
           rgba(
             $color: #ffb26b,
@@ -54,7 +78,7 @@ $themes: (
   // dark theme
   dark:
     (
-      "primary-colors": (
+      "primary": (
         50: "#f4f4f4",
         100: "#e9e9e9",
         200: "#c9c9c9",
@@ -66,7 +90,7 @@ $themes: (
         800: "#171717",
         900: "#131313",
       ),
-      "secondary-colors": (
+      "secondary": (
         50: "#fafaf7",
         100: "#f4f5ef",
         200: "#e4e6d8",
@@ -77,6 +101,18 @@ $themes: (
         700: "#6e744a",
         800: "#585d3b",
         900: "#484c30",
+      ),
+      "accent": (
+        50: "#f5fcfc",
+        100: "#ecfafa",
+        200: "#cff1f2",
+        300: "#b2e9e9",
+        400: "#79d9d9",
+        500: "#3fc8c9",
+        600: "#39b4b5",
+        700: "#2f9697",
+        800: "#267879",
+        900: "#1f6262",
       ),
       "other-colors": (
         "background": "#262626",
