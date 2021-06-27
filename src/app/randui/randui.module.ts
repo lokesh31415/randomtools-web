@@ -3,9 +3,10 @@ import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { RandButtonComponent } from './components';
 import { RandRoundedDirective } from './directives';
+import { RandOutlinedDirective } from './directives/rand-outlined.directive';
 
 const COMPONENTS = [RandButtonComponent];
-const DIRECTIVES = [RandRoundedDirective];
+const DIRECTIVES = [RandRoundedDirective, RandOutlinedDirective];
 
 @NgModule({
   imports: [BrowserModule, FormsModule],

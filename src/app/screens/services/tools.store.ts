@@ -112,7 +112,7 @@ export const TOOLS_STORE = {
       id: 'image-collage',
       label: 'Make Collage',
       path: 'image/collage',
-      icon: 'add_photo',
+      icon: 'add_photo_alternate',
       disabled: true,
       keywords: ['collage', 'image'],
     },

@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Tool } from 'src/app/screens/models';
+import { randint } from '../../utils';
 
 @Component({
   selector: 'app-tool',
@@ -11,7 +13,22 @@ export class ToolComponent implements OnInit {
 
   defaultIcon = 'file_copy';
 
-  constructor() {}
+  constructor(private router: Router) {}
 
   ngOnInit(): void {}
+
+  getRandomColor() {
+    let r = randint(50, 200);
+    let g = randint(50, 200);
+    let b = randint(50, 200);
+    return `rgb(${r}, ${g}, ${b})`;
+  }
+
+  getIconStyles() {
+    return { color: this.getRandomColor() };
+  }
+
+  loadToolPage() {
+    this.router.navigateByUrl(this.tool.path, { state: { tool: this.tool } });
+  }
 }

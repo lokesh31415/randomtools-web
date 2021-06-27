@@ -8,21 +8,21 @@
   </div>
   <main class="home__main page-content">
     <section class="section hero-section">
+      <div class="hero-right">
+        <ng-container *ngTemplateOutlet="heroImage; context: {}"></ng-container>
+      </div>
       <div class="hero-left">
         <div class="hero-title">
-          <h2 class="secondary semi-bold">ALL TOOLS YOU NEED IN ONE PLACE</h2>
-          <h2 class="secondary semi-bold">FOR FREE</h2>
+          <h2 class="secondary semi-bold">ALL TOOLS, YOU NEED, IN ONE PLACE</h2>
+          <h1 class="secondary semi-bold">FOR FREE</h1>
         </div>
         <rand-button
-          color="secondary"
-          rand-rounded
+          color="accent"
+          rand-outlined
           class="hero-button"
           (onClick)="loadToolsPage($event)"
           >Try Now</rand-button
         >
-      </div>
-      <div class="hero-right">
-        <ng-container *ngTemplateOutlet="heroImage; context: {}"></ng-container>
       </div>
     </section>
   </main>
@@ -66,5 +66,5 @@
 </ng-template>
 
 <ng-template #heroImage>
-  <img src="assets/svgs/hero.svg" alt="" />
+  <img src="assets/svgs/tasks-accent.svg" alt="" />
 </ng-template>

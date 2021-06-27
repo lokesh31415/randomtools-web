@@ -23,15 +23,22 @@
 
   .hero-title {
     margin-top: 3rem;
-    text-align: center;
+    text-align: left;
     line-height: 6rem;
+    width: 100%;
+
+    h2,
+    h1 {
+      font-weight: 500;
+    }
   }
 
   .hero-button {
-    text-align: center;
+    text-align: left;
+    width: 100%;
     display: inline-block;
-    font-size: 2.5rem;
-    margin-top: 10rem;
+    font-size: 2rem;
+    margin-top: 7rem;
     color: var(--text-dark-btn-color);
   }
 
@@ -40,7 +47,6 @@
     width: 100%;
     display: flex;
     align-items: center;
-    justify-content: center;
 
     img {
       margin-top: 5rem;

@@ -1,11 +1,17 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent, ToolsComponent } from './screens/components';
+import {
+  HomeComponent,
+  PdfCompressComponent,
+  ToolsComponent,
+} from './screens/components';
 
 const routes: Routes = [
-  { path: 'landing-page', component: HomeComponent },
   { path: '', redirectTo: 'landing-page', pathMatch: 'full' },
+  { path: 'landing-page', component: HomeComponent },
   { path: 'tools', component: ToolsComponent },
+  { path: 'pdf/compress', component: PdfCompressComponent },
+  { path: '**', component: HomeComponent },
 ];
 
 @NgModule({

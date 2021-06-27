@@ -17,7 +17,7 @@ export class Tool {
    * @param id - unique Id of this tool.
    * @param path - url path of this tool's home page (mainly used for routing).
    */
-  constructor(private _id: string, private path: string) {
+  constructor(private _id: string, public path: string) {
     this.label = _id;
     this.keywords.add(this.label);
   }

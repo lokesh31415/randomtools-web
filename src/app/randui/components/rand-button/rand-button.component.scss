@@ -1,3 +1,5 @@
+@use '../../global/rand-mixins.scss' as mixins;
+
 .rand-btn {
   &,
   &:visited,
@@ -28,12 +30,4 @@
   }
 }
 
-.rand-primary-btn {
-  background-color: var(--primary-color-500);
-}
-.rand-secondary-btn {
-  background-color: var(--secondary-color-500);
-}
-.rand-danger-btn {
-  background-color: var(--danger-color);
-}
+@include mixins.button-colorscheme-classes();
