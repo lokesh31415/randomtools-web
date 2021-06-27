@@ -4,10 +4,10 @@ import { AppRoutingModule } from '../app-routing.module';
 import { CoreModule } from '../core/core.module';
 import { RandUIModule } from '../randui/randui.module';
 import { SharedModule } from '../shared/shared.module';
-import { HomeComponent } from './components';
+import { HomeComponent, ToolsComponent } from './components';
 
 @NgModule({
-  declarations: [HomeComponent],
+  declarations: [HomeComponent, ToolsComponent],
   imports: [
     SharedModule,
     CoreModule,

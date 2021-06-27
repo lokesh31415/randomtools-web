@@ -1,3 +1,4 @@
+// landing page header style
 .header {
   &__root {
     position: relative;
@@ -13,6 +14,24 @@
     align-items: center;
     width: 100%;
     height: 65%;
+    color: var(--text-black-color);
+  }
+}
+
+// other pages header styles
+header.other-pages {
+  height: var(--height-header-small);
+
+  .logo,
+  .header__content {
+    color: var(--text-white-color);
+    font-size: var(--font-size-h2);
+    font-weight: 500;
+  }
+
+  svg.header-background {
+    height: var(--height-header-small);
+    fill: url(#g-primary);
   }
 }
 
@@ -32,14 +51,15 @@ svg.header-background {
   color: var(--text-secondary-color);
   width: 25%;
   text-align: center;
-  font-size: var(--font-size-h1);
-  font-weight: 500;
+  // font-size: var(--font-size-h1);
+  // font-weight: 500;
+  cursor: pointer;
 }
 
 ul.nav {
   list-style: none;
   li {
-    font-size: var(--font-size-paragraph);
+    font-size: var(--font-size-paragraph-1);
     font-weight: 600;
     display: inline;
     padding: 0.5rem 1rem;
@@ -50,7 +70,7 @@ ul.nav {
       position: relative;
       display: inline-block;
       text-decoration: none;
-      color: var(--text-black-color);
+      color: inherit;
     }
     &:hover {
       cursor: pointer;
@@ -62,6 +82,6 @@ ul.nav {
 .login-btn {
   width: 25%;
   text-align: center;
-  font-size: 1.7rem;
+  font-size: 1.5rem;
   color: var(--text-dark-btn-color);
 }

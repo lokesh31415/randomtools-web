@@ -6,6 +6,7 @@
 <ng-template #fsvgback>
   <svg
     class="footer-background"
+    [ngStyle]="getSVGFillColor()"
     preserveAspectRatio="none"
     viewBox="0 0 1920 368"
     fill="none"
@@ -52,6 +53,23 @@
           result="shape"
         />
       </filter>
+    </defs>
+    <defs>
+      <linearGradient id="g-primary" x1=".5" x2=".5" y2="1">
+        <stop stop-color="var(--primary-color-500)" />
+        <stop offset=".8" stop-color="var(--primary-color-600)" />
+        <stop offset="1" stop-color="var(--primary-color-600)" />
+      </linearGradient>
+      <linearGradient id="g-secondary" x1=".5" x2=".5" y2="1">
+        <stop stop-color="var(--secondary-color-500)" />
+        <stop offset=".8" stop-color="var(--secondary-color-600)" />
+        <stop offset="1" stop-color="var(--secondary-color-600)" />
+      </linearGradient>
+      <linearGradient id="g-accent" x1=".5" x2=".5" y2="1">
+        <stop stop-color="var(--accent-color-500)" />
+        <stop offset=".8" stop-color="var(--accent-color-600)" />
+        <stop offset="1" stop-color="var(--accent-color-600)" />
+      </linearGradient>
     </defs>
   </svg>
 </ng-template>

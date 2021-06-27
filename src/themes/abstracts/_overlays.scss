@@ -1,0 +1,18 @@
+@mixin overlay-disabled($content: "", $fontsize: 1.3em) {
+  &::before {
+    content: $content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    color: black;
+    left: 0;
+    font-weight: 600;
+    background-color: var(--disabled-color);
+    opacity: 0.8;
+    font-size: $fontsize;
+    width: 100%;
+    height: 100%;
+  }
+}

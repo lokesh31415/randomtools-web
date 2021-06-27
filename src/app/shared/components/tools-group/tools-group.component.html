@@ -1,0 +1,14 @@
+<div class="tools-group group">
+  <div class="group__title">
+    {{ group.label }}
+  </div>
+  <div class="group__content">
+    <ng-container *ngFor="let toolId of group.tools">
+      <app-tool
+        class="group__item"
+        *ngIf="isTool(toolId)"
+        [tool]="getTool(toolId)"
+      ></app-tool>
+    </ng-container>
+  </div>
+</div>

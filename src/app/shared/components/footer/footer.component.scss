@@ -11,6 +11,6 @@ svg.footer-background {
   position: absolute;
   width: 100%;
   height: var(--height-footer);
-  fill: var(--footer-background-color);
+  fill: url(#g-primary);
   z-index: -1;
 }

@@ -1,0 +1,32 @@
+.group {
+  &__title {
+    font-size: var(--font-size-h4);
+    color: var(--text-secondary-color);
+    display: flex;
+    align-items: center;
+    &::before,
+    &::after {
+      content: "";
+      flex: 1;
+      border-bottom: 2px solid var(--border-color);
+    }
+
+    &:not(:empty)::before {
+      margin-right: 3rem;
+    }
+    &:not(:empty)::after {
+      margin-left: 3rem;
+    }
+  }
+
+  &__content {
+    padding: 4rem 1rem;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  &__item {
+    flex-basis: 14rem;
+    margin: 1.75rem;
+  }
+}

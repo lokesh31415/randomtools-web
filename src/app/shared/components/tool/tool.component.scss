@@ -1,0 +1,43 @@
+@use "../../../../themes/abstracts/overlays";
+
+.tool-card {
+  display: flex;
+  max-width: 15rem;
+  flex-direction: column;
+  background: var(--white-color);
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  align-items: center;
+  position: relative;
+
+  &:hover:not(.tool-disabled) {
+    cursor: pointer;
+    background-color: var(--accent-color-100);
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .tool-icon {
+    padding: 1.5rem;
+    span.material-icons-outlined {
+      font-size: 36px;
+      color: var(--danger-color-500);
+    }
+  }
+
+  .seperator {
+    border-bottom: 1px solid var(--border-color);
+    display: inline-block;
+    width: 90%;
+  }
+
+  .tool-label {
+    font-size: var(--font-size-subtitle-1);
+    font-weight: 600;
+    padding: 5px 2px;
+    color: var(--text-black-light-color);
+  }
+}
+
+.tool-disabled {
+  @include overlays.overlay-disabled("Coming Soon ..");
+}

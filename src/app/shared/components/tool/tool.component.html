@@ -1,0 +1,7 @@
+<div class="tool-card" [class.tool-disabled]="tool.disabled" *ngIf="tool">
+  <div class="tool-icon">
+    <span class="material-icons-outlined">{{ tool.icon || defaultIcon }}</span>
+  </div>
+  <div class="seperator"></div>
+  <div class="tool-label">{{ tool.label }}</div>
+</div>

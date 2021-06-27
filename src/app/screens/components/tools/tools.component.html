@@ -1,0 +1,12 @@
+<div class="page-grid tools-root tools">
+  <app-header class="header" page="others" color="accent"></app-header>
+  <main class="page-content tools__main">
+    <section
+      class="tools__section"
+      *ngFor="let group of toolsService.toolsGroupArr"
+    >
+      <app-tools-group [group]="group"></app-tools-group>
+    </section>
+  </main>
+  <app-footer color="accent" class="footer"></app-footer>
+</div>
