@@ -15,12 +15,12 @@ export class ToolsGroupComponent implements OnInit {
   ngOnInit(): void {}
 
   getTool(id: string): Tool {
-    const tool = this.toolsService.toolsObj[id];
+    const tool = this.toolsService.toolsMap[id];
     return tool;
   }
 
   isTool(id: string): boolean {
-    const tool = this.toolsService.toolsObj[id];
+    const tool = this.toolsService.toolsMap[id];
     return !!tool;
   }
 }

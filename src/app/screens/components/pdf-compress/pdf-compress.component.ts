@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
-import { Tool } from '../../models';
+import { Tool, ToolsGroup } from '../../models';
+import { ToolsService } from '../../services/tools.service';
 
 @Component({
   selector: 'app-pdf-compress',
@@ -9,14 +10,21 @@ import { Tool } from '../../models';
 })
 export class PdfCompressComponent implements OnInit {
   toolData: Tool;
-  constructor(private location: Location) {}
+  constructor(private location: Location, private toolsService: ToolsService) {}
 
   ngOnInit(): void {
     const routeState = this.location.getState() as {
       [props: string]: any;
-      tool: Tool;
+      toolId: string;
     };
-    const { tool } = routeState;
-    if (tool) this.toolData = tool;
+    const { toolId } = routeState;
+    if (toolId) this.toolData = this.toolsService.toolsMap[toolId];
+    if (this.toolData?.relatedTools?.tools?.length == 0) {
+      this.toolsService.calculateRelatedTools(this.toolData);
+    }
+  }
+
+  hasRelatedTools() {
+    return this.toolData?.relatedTools?.tools?.length;
   }
 }

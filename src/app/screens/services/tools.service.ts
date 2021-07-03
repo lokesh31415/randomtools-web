@@ -5,7 +5,7 @@ import { Tool, ToolsGroup } from '../models';
 import { ToolParseStatus } from '../type';
 import { TOOLS_STORE } from './tools.store';
 
-const MAX_KEYWORDS = 10;
+const MAX_KEYWORDS = 5;
 
 @Injectable({
   providedIn: 'root',
@@ -13,34 +13,39 @@ const MAX_KEYWORDS = 10;
 export class ToolsService {
   private _toolsDataCache: string;
   private _toolsGroupsArr: ToolsGroup[] = [];
-  private _toolsGroupsObj: { [props: string]: ToolsGroup } = {};
+  private _toolsGroupsMap: { [props: string]: ToolsGroup } = {};
   private _toolsArr: Tool[] = [];
-  private _toolsObj: { [props: string]: Tool } = {};
+  private _toolsMap: { [props: string]: Tool } = {};
+  private _keywordToolsMap: { [keyword: string]: string[] } = {};
 
   constructor() {
     this._toolsDataCache = JSON.stringify(TOOLS_STORE);
   }
 
   // getters
-  get toolsGroupArr() {
+  public get toolsGroupArr() {
     return this._toolsGroupsArr;
   }
 
-  get toolsGroupObj() {
-    return this._toolsGroupsObj;
+  public get toolsGroupMap() {
+    return this._toolsGroupsMap;
   }
 
-  get toolsArr() {
+  public get toolsArr() {
     return this._toolsArr;
   }
 
-  get toolsObj() {
-    return this._toolsObj;
+  public get toolsMap() {
+    return this._toolsMap;
+  }
+
+  public get keywordToolsMap() {
+    return this._keywordToolsMap;
   }
 
   // other methods
   /**
-   * Loads data from the store object into easily accessable data structures.
+   * Async function that Loads data from the store object into easily accessable data structures.
    * Make sure to call this method only once.
    * @returns an observable with status messages / errors.
    */
@@ -58,10 +63,17 @@ export class ToolsService {
         tool.disabled = !!disabled;
         tool.keywords =
           keywords?.length > MAX_KEYWORDS
-            ? new Set(keywords.slice(0, 10))
-            : new Set(keywords || [id]);
+            ? new Set(keywords.slice(0, MAX_KEYWORDS))
+            : new Set(keywords || id?.split('-') || []);
         this._toolsArr.push(tool);
-        this.toolsObj[id] = tool;
+        this.toolsMap[id] = tool;
+        keywords.forEach((kw) => {
+          if (this._keywordToolsMap[kw]) {
+            this._keywordToolsMap[kw].push(id);
+          } else {
+            this._keywordToolsMap[kw] = [id];
+          }
+        });
       });
 
       // create groups object and array
@@ -71,9 +83,23 @@ export class ToolsService {
         group.label = label;
         group.tools = tools;
         this._toolsGroupsArr.push(group);
-        this._toolsGroupsObj[id] = group;
+        this._toolsGroupsMap[id] = group;
       });
+
       subscriber.next('done');
     });
+  }
+
+  /**
+   * function to create related tools
+   */
+  calculateRelatedTools(tool: Tool) {
+    const relatedToolIds: string[] = [];
+    tool.keywords.forEach((kw) => {
+      relatedToolIds.push(...(this._keywordToolsMap[kw] || []));
+    });
+    const currToolIndex = relatedToolIds.indexOf(tool.id);
+    if (currToolIndex !== -1) relatedToolIds.splice(currToolIndex, 1);
+    tool.relatedTools.tools = relatedToolIds;
   }
 }

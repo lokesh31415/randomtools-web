@@ -1,0 +1,84 @@
+@use '../../../../themes/abstracts/mixins';
+
+.pdf-compress {
+  &__main {
+    min-height: 80vh;
+  }
+}
+
+.section-compress {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1rem 15rem;
+
+  & > * {
+    margin-bottom: 3rem;
+  }
+
+  .title {
+    font-size: var(--font-size-h3);
+    text-align: center;
+    color: var(--text-black-color);
+  }
+
+  .upload-area {
+    width: 100%;
+    height: 45vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    & > * {
+      margin-bottom: 2rem;
+    }
+
+    @include mixins.gradientBg(
+      var(--secondary-color-50),
+      var(--secondary-color-100),
+      180deg
+    );
+
+    border: 1px solid var(--border-color);
+    box-shadow: inset 4px 4px 4px rgba(0, 0, 0, 0.25),
+      inset -4px -4px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+
+    .upload-button {
+      font-size: 2rem;
+      color: var(--text-dark-btn-color);
+    }
+
+    .upload-text {
+      font-size: 1.5rem;
+      color: var(--secondary-color-500);
+    }
+  }
+}
+
+.compress-actions {
+  display: flex;
+  justify-content: space-between;
+
+  .compress-quality {
+    width: 100%;
+    margin-right: 5rem;
+  }
+
+  .action-buttons {
+    display: flex;
+    font-weight: 600;
+    font-size: 1.5rem;
+
+    & > * {
+      margin-left: 1.5rem;
+      color: var(--text-dark-btn-color);
+    }
+  }
+}
+
+.section-related-tools {
+  padding: 1rem 9rem;
+  margin: 5rem 0;
+}

@@ -9,7 +9,6 @@ export class RandOutlinedDirective {
   ngOnInit(): void {
     let parent: HTMLElement = this.elRef.nativeElement;
     let targetEl = parent.firstChild as HTMLElement;
-    console.log(targetEl);
     if (targetEl) {
       this.renderer.addClass(targetEl, 'rand-outlined');
     }

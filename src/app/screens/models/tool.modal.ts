@@ -1,3 +1,5 @@
+import { ToolsGroup } from './tools-group.modal';
+
 /**
  * Tools model to store a tool information (like pdf compresser).
  */
@@ -10,8 +12,15 @@ export class Tool {
   icon: string = 'file_copy';
   // whether to diisabled this tool or not
   disabled: boolean = false;
+  // related tools
+  relatedTools: ToolsGroup;
   // path of the api-end-point assigned for this tool.
   apiPath?: string;
+
+  // getters
+  public get id(): string {
+    return this._id;
+  }
 
   /**
    * @param id - unique Id of this tool.
@@ -20,10 +29,8 @@ export class Tool {
   constructor(private _id: string, public path: string) {
     this.label = _id;
     this.keywords.add(this.label);
-  }
 
-  // getters
-  get id(): string {
-    return this.id;
+    this.relatedTools = new ToolsGroup(_id + '-relatedtools');
+    this.relatedTools.label = 'Related Tools';
   }
 }

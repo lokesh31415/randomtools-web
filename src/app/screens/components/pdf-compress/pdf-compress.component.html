@@ -1,0 +1,39 @@
+<div class="page-grid pdf-compress">
+  <app-header class="header" page="others" color="accent"></app-header>
+  <main class="page-content pdf-compress__main">
+    <section class="section-compress">
+      <div class="title">Compress PDF</div>
+      <div class="upload-area">
+        <rand-button
+          rand-outlined
+          rand-rounded
+          color="secondary"
+          class="upload-button"
+        >
+          Choose file
+          <span class="material-icons-outlined rand-button-icon"
+            >file_upload</span
+          >
+        </rand-button>
+        <div class="upload-text">Drop file here</div>
+      </div>
+      <div class="compress-actions">
+        <div class="compress-quality">
+          <select name="Compression quality"></select>
+        </div>
+        <div class="action-buttons">
+          <rand-button rand-outlined class="compress-button" color="secondary"
+            >Compress</rand-button
+          >
+          <rand-button rand-outlined class="cancel-button" color="danger"
+            >Cancel</rand-button
+          >
+        </div>
+      </div>
+    </section>
+    <section class="section-related-tools" *ngIf="hasRelatedTools()">
+      <app-tools-group [group]="toolData.relatedTools"></app-tools-group>
+    </section>
+  </main>
+  <app-footer color="accent" class="footer"></app-footer>
+</div>

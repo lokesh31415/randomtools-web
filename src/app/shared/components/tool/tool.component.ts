@@ -29,6 +29,8 @@ export class ToolComponent implements OnInit {
   }
 
   loadToolPage() {
-    this.router.navigateByUrl(this.tool.path, { state: { tool: this.tool } });
+    this.router.navigateByUrl(this.tool.path, {
+      state: { toolId: this.tool.id },
+    });
   }
 }
