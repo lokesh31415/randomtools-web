@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { Tool, ToolsGroup } from '../../models';
 import { ToolsService } from '../../services/tools.service';
+import { SelectInputData } from 'src/app/randui/type';
 
 @Component({
   selector: 'app-pdf-compress',
@@ -10,6 +11,26 @@ import { ToolsService } from '../../services/tools.service';
 })
 export class PdfCompressComponent implements OnInit {
   toolData: Tool;
+  compressSelectData: SelectInputData = [
+    {
+      id: 'default',
+      label: 'Select compression type',
+      disabled: true,
+    },
+    {
+      id: 'low',
+      label: 'Low compression, high quality',
+    },
+    {
+      id: 'average',
+      label: 'Medium compression, average quality',
+    },
+    {
+      id: 'low',
+      label: 'High compression, low quality',
+    },
+  ];
+
   constructor(private location: Location, private toolsService: ToolsService) {}
 
   ngOnInit(): void {

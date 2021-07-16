@@ -19,7 +19,11 @@
       </div>
       <div class="compress-actions">
         <div class="compress-quality">
-          <select name="Compression quality"></select>
+          <rand-select
+            [data]="compressSelectData"
+            [selectedItemIdx]="1"
+            [color]="'secondary'"
+          ></rand-select>
         </div>
         <div class="action-buttons">
           <rand-button rand-outlined class="compress-button" color="secondary"

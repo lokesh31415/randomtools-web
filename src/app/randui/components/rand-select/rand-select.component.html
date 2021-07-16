@@ -1,0 +1,18 @@
+<div class="rand-select-wrapper">
+  <div
+    class="rand-select"
+    [ngClass]="getSelectColorClazz()"
+    (click)="toggleOptionsPanel()"
+  ></div>
+  <span
+    class="rand-select-arrow"
+    [ngClass]="randStyleService.getColorClazz(color)"
+    [class.rand-select-arrow-up]="this.opened"
+  ></span>
+</div>
+
+<ng-template #selectoptions>
+  <div *ngFor="let item of data">
+    <div [class.disabled]="item.disabled">{{ item.label }}</div>
+  </div>
+</ng-template>

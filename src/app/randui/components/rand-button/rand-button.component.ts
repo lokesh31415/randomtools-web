@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { RandColor } from '../../type';
 
 @Component({
   selector: 'rand-button',
@@ -6,7 +7,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
   styleUrls: ['./rand-button.component.scss', '../../global/rand-styles.scss'],
 })
 export class RandButtonComponent implements OnInit {
-  @Input() color: 'primary' | 'secondary' | 'danger' | string = 'primary';
+  @Input() color: RandColor = 'primary';
   @Output('onClick') onClickEvent = new EventEmitter<any>();
 
   constructor() {}

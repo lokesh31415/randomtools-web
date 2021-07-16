@@ -26,3 +26,41 @@
     }
   }
 }
+
+@mixin select-colorscheme-classes(
+  $schemes: (
+    "primary",
+    "secondary",
+    "accent",
+    "danger",
+  )
+) {
+  @each $scheme in $schemes {
+    .rand-#{$scheme}-select {
+      color: var(--#{$scheme}-color-500);
+      border: 3px solid currentColor;
+    }
+  }
+}
+
+@mixin colorscheme-classes(
+  $schemes: (
+    "primary",
+    "secondary",
+    "accent",
+    "danger",
+  )
+) {
+  @each $scheme in $schemes {
+    .rand-#{$scheme}-color {
+      color: var(--#{$scheme}-color-500);
+      &::before,
+      &::after {
+        background-color: var(--#{$scheme}-color-600);
+      }
+    }
+    .rand-#{$scheme}-background-color {
+      background-color: var(--#{$scheme}-color-500);
+    }
+  }
+}
