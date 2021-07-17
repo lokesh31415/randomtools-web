@@ -4,7 +4,7 @@ import { RandColor } from '../../type';
 @Component({
   selector: 'rand-button',
   templateUrl: './rand-button.component.html',
-  styleUrls: ['./rand-button.component.scss', '../../global/rand-styles.scss'],
+  styleUrls: ['./rand-button.component.scss'],
 })
 export class RandButtonComponent implements OnInit {
   @Input() color: RandColor = 'primary';

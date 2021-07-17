@@ -1,4 +1,11 @@
-import { Component, ElementRef, Input, OnInit } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+} from '@angular/core';
 import { RandStyleService } from '../../services';
 import { RandColor, SelectInputData, SelectInputItem } from '../../type';
 
@@ -8,17 +15,16 @@ import { RandColor, SelectInputData, SelectInputItem } from '../../type';
   styleUrls: ['./rand-select.component.scss'],
 })
 export class RandSelectComponent implements OnInit {
-  // mapped to select input's name attribute
-  @Input('name') name: string = 'Select Input';
   // mapped to select input's title attribute
   @Input('title') title: string = 'Select Input';
   // select input data to display
   @Input('data') data: SelectInputData = [];
-  @Input('selectedItemId') activeItemId: string;
-  @Input('selectedItemIdx') activeItemIdx: number;
-  @Input('selectedItem') activeItem: SelectInputItem;
+  @Input('selectedItemIdx') activeItemIdx: number = 0;
   // color of the select
   @Input('color') color: RandColor = 'primary';
+
+  @Output('itemSelected') itemSelectedEvent =
+    new EventEmitter<SelectInputItem>();
 
   opened: boolean = false;
 
@@ -32,5 +38,11 @@ export class RandSelectComponent implements OnInit {
 
   toggleOptionsPanel() {
     this.opened = !this.opened;
+  }
+
+  optionSelected(item: SelectInputItem, idx: number) {
+    this.activeItemIdx = idx;
+    this.toggleOptionsPanel();
+    this.itemSelectedEvent.emit(item);
   }
 }

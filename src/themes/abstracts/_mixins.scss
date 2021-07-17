@@ -1,11 +1,26 @@
+@mixin generate_css_color_var($name, $color) {
+  --#{$name}: #{$color};
+  @include generate_css_color_var_rgb($name, $color);
+}
+
+@mixin generate_css_color_var_rgb($name, $color) {
+  $color-str: inspect($color);
+  // handle only hex value
+  @if (type-of($color) == "color") and (str-index($color-str, "#") == 1) {
+    $rgba: inspect(rgba($color, 0.9));
+    $rgb: str-slice($rgba, 6, str-length($rgba)-6);
+    --#{$name}-rgb: #{$rgb};
+  }
+}
+
 @mixin generate-palatte-variables($palatte-map, $prefix, $suffix) {
   @each $shade, $color in $palatte-map {
     @if $prefix == null {
-      --#{$shade}-#{$suffix}: #{$color};
+      @include generate_css_color_var(#{$shade}-#{$suffix}, $color);
     } @else if $suffix == null {
-      --#{$prefix}-#{$shade}: #{$color};
+      @include generate_css_color_var(#{$prefix}-#{$shade}, $color);
     } @else {
-      --#{$prefix}-#{$shade}-#{$suffix}: #{$color};
+      @include generate_css_color_var(#{$prefix}-#{$shade}-#{$suffix}, $color);
     }
   }
 }
