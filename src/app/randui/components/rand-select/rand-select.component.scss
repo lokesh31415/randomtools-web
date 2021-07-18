@@ -5,6 +5,7 @@
 $translateX-distance: 4.5px;
 $rotate-angle: 45deg;
 $arrow-wrapper-width: 4em;
+
 .rand-select-wrapper {
   position: relative;
   height: 100%;
@@ -38,7 +39,7 @@ $arrow-wrapper-width: 4em;
   opacity: 0;
   overflow: hidden;
   transition: all 0.15s ease-in-out;
-  transform: translateY(1rem);
+  transform: translateY(-2rem);
 
   &.dropdown-visible {
     visibility: visible;
@@ -58,6 +59,10 @@ $arrow-wrapper-width: 4em;
     &.disabled {
       pointer-events: none;
       opacity: 0.6;
+    }
+
+    &.selected {
+      background-color: rgba(#{var(--highlight-color-rgb)}, 0.15);
     }
   }
 }

@@ -9,9 +9,11 @@ import {
   PdfCompressComponent,
   ToolsComponent,
 } from './components';
+import { PdfConvertComponent } from './components/pdf-convert/pdf-convert.component';
+import { ImageCompressComponent } from './components/image-compress/image-compress.component';
 
 @NgModule({
-  declarations: [HomeComponent, ToolsComponent, PdfCompressComponent],
+  declarations: [HomeComponent, ToolsComponent, PdfCompressComponent, PdfConvertComponent, ImageCompressComponent],
   imports: [
     SharedModule,
     CoreModule,

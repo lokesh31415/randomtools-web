@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
+import { UrlSegment } from '@angular/router';
 import { Observable } from 'rxjs';
 import { ToolsDataResponse } from '../interfaces';
 import { Tool, ToolsGroup } from '../models';
 import { ToolParseStatus } from '../type';
+import { getToolIdFromUrl } from '../utils';
 import { TOOLS_STORE } from './tools.store';
 
 const MAX_KEYWORDS = 5;
@@ -16,7 +18,7 @@ export class ToolsService {
   private _toolsGroupsMap: { [props: string]: ToolsGroup } = {};
   private _toolsArr: Tool[] = [];
   private _toolsMap: { [props: string]: Tool } = {};
-  private _keywordToolsMap: { [keyword: string]: string[] } = {};
+  private _keywordToolsMap: { [keyword: string]: Set<string> } = {};
 
   constructor() {
     this._toolsDataCache = JSON.stringify(TOOLS_STORE);
@@ -55,8 +57,8 @@ export class ToolsService {
       if (!toolsData) subscriber.error('toolsData not found');
       // create tools object and array first
       toolsData.tools?.forEach((t) => {
-        const { id, label, path, keywords, apiPath, icon, disabled } = t;
-        const tool = new Tool(id, path || '');
+        const { id, label, keywords, apiPath, icon, disabled } = t;
+        const tool = new Tool(id);
         tool.label = label;
         tool.apiPath = apiPath;
         tool.icon = icon;
@@ -69,9 +71,9 @@ export class ToolsService {
         this.toolsMap[id] = tool;
         keywords.forEach((kw) => {
           if (this._keywordToolsMap[kw]) {
-            this._keywordToolsMap[kw].push(id);
+            this._keywordToolsMap[kw].add(id);
           } else {
-            this._keywordToolsMap[kw] = [id];
+            this._keywordToolsMap[kw] = new Set(id);
           }
         });
       });
@@ -81,7 +83,7 @@ export class ToolsService {
         const { id, label, tools } = g;
         const group = new ToolsGroup(id);
         group.label = label;
-        group.tools = tools;
+        group.tools = new Set(tools);
         this._toolsGroupsArr.push(group);
         this._toolsGroupsMap[id] = group;
       });
@@ -91,15 +93,41 @@ export class ToolsService {
   }
 
   /**
-   * function to create related tools
+   * function to create related tools, updates related tools inforation in the tools instance itself.
+   * @param tool tool for which related to has to be created.
    */
-  calculateRelatedTools(tool: Tool) {
-    const relatedToolIds: string[] = [];
+  public calculateRelatedTools(tool: Tool) {
+    const relatedToolIds: Set<string> = new Set();
     tool.keywords.forEach((kw) => {
-      relatedToolIds.push(...(this._keywordToolsMap[kw] || []));
+      this._keywordToolsMap[kw].forEach((toolId) => relatedToolIds.add(toolId));
     });
-    const currToolIndex = relatedToolIds.indexOf(tool.id);
-    if (currToolIndex !== -1) relatedToolIds.splice(currToolIndex, 1);
+    relatedToolIds.delete(tool.id);
     tool.relatedTools.tools = relatedToolIds;
+  }
+
+  /**
+   * Returns tool information for the given toolId
+   * @param toolId id of the tools
+   * @returns tool information
+   */
+  public getTool(toolId: string): Tool {
+    return this.toolsMap[toolId];
+  }
+
+  /**
+   * Parses last two sengments of the given router url and combines them with '-',
+   * checks if a tool exist with that id and returns it.
+   * @param url router url segments as UrlSegment[]
+   * @returns tool information if exist else undefined.
+   */
+  public getToolFromUrl(url: UrlSegment[]) {
+    let toolData: Tool;
+    const toolId = getToolIdFromUrl(url);
+    toolData = this.getTool(toolId);
+    // calculate related tools
+    if (toolData && !toolData?.hasRelatedTools()) {
+      this.calculateRelatedTools(toolData);
+    }
+    return toolData;
   }
 }

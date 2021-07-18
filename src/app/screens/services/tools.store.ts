@@ -42,7 +42,6 @@ export const TOOLS_STORE = {
     {
       id: 'pdf-compress',
       label: 'Compress PDF',
-      path: 'pdf/compress',
       apiPath: 'compress/pdf',
       icon: 'compress',
       keywords: ['compress', 'pdf'],
@@ -50,7 +49,6 @@ export const TOOLS_STORE = {
     {
       id: 'pdf-convert',
       label: 'Convert PDF',
-      path: 'pdf/convert',
       apiPath: 'convert/pdf',
       icon: 'file_copy',
       keywords: ['convert', 'pdf'],
@@ -58,14 +56,12 @@ export const TOOLS_STORE = {
     {
       id: 'pdf-merge',
       label: 'Merge PDF',
-      path: 'pdf/merge',
       disabled: true,
       keywords: ['merge', 'pdf'],
     },
     {
       id: 'pdf-create',
       label: 'Create PDF',
-      path: 'pdf/create',
       icon: 'picture_as_pdf',
       disabled: true,
       keywords: ['create', 'pdf'],
@@ -73,7 +69,6 @@ export const TOOLS_STORE = {
     {
       id: 'pdf-edit',
       label: 'Edit PDF',
-      path: 'pdf/edit',
       icon: 'edit_note',
       disabled: true,
       keywords: ['edit', 'pdf'],
@@ -81,21 +76,19 @@ export const TOOLS_STORE = {
     {
       id: 'image-compress',
       label: 'Compress Image',
-      path: 'image/compress',
       icon: 'compress',
       keywords: ['compress', 'image'],
     },
     {
       id: 'image-convert',
       label: 'Convert Image',
-      path: 'image/convert',
       icon: 'file_copy',
+      disabled: true,
       keywords: ['convert', 'image'],
     },
     {
       id: 'image-resize',
       label: 'Resize',
-      path: 'image/resize',
       icon: 'crop',
       disabled: true,
       keywords: ['resize', 'image'],
@@ -103,7 +96,6 @@ export const TOOLS_STORE = {
     {
       id: 'image-filters',
       label: 'Apply Filters',
-      path: 'image/filters',
       icon: 'filter',
       disabled: true,
       keywords: ['filter', 'image'],
@@ -111,7 +103,6 @@ export const TOOLS_STORE = {
     {
       id: 'image-collage',
       label: 'Make Collage',
-      path: 'image/collage',
       icon: 'add_photo_alternate',
       disabled: true,
       keywords: ['collage', 'image'],
@@ -119,7 +110,6 @@ export const TOOLS_STORE = {
     {
       id: 'image-edit',
       label: 'Edit Image',
-      path: 'image/edit',
       icon: 'edit_note',
       disabled: true,
       keywords: ['edit', 'image'],
@@ -127,21 +117,20 @@ export const TOOLS_STORE = {
     {
       id: 'audio-compress',
       label: 'Compress Audio',
-      path: 'audio/compress',
       icon: 'compress',
+      disabled: true,
       keywords: ['compress', 'audio'],
     },
     {
       id: 'audio-convert',
       label: 'Convert Audio',
-      path: 'audio/convert',
       icon: 'file_copy',
+      disabled: true,
       keywords: ['convert', 'audio'],
     },
     {
       id: 'audio-crop',
       label: 'Crop Audio',
-      path: 'audio/crop',
       icon: 'content_cut',
       disabled: true,
       keywords: ['crop', 'audio'],

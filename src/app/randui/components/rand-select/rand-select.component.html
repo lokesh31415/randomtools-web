@@ -25,6 +25,7 @@
   <div
     class="rand-select-option"
     [class.disabled]="item.disabled"
+    [class.selected]="idx === activeItemIdx"
     *ngFor="let item of data; let idx = index"
     (click)="optionSelected(item, idx)"
   >

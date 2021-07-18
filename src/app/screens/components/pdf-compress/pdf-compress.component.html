@@ -35,7 +35,7 @@
         </div>
       </div>
     </section>
-    <section class="section-related-tools" *ngIf="hasRelatedTools()">
+    <section class="section-related-tools" *ngIf="toolData?.hasRelatedTools()">
       <app-tools-group [group]="toolData.relatedTools"></app-tools-group>
     </section>
   </main>

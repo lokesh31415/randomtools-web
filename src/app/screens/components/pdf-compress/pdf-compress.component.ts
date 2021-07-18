@@ -1,16 +1,19 @@
-import { Component, OnInit } from '@angular/core';
-import { Location } from '@angular/common';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Tool, ToolsGroup } from '../../models';
 import { ToolsService } from '../../services/tools.service';
 import { SelectInputData } from 'src/app/randui/type';
+import { ActivatedRoute } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { getToolIdFromUrl } from '../../utils';
 
 @Component({
   selector: 'app-pdf-compress',
   templateUrl: './pdf-compress.component.html',
   styleUrls: ['./pdf-compress.component.scss'],
 })
-export class PdfCompressComponent implements OnInit {
+export class PdfCompressComponent implements OnInit, OnDestroy {
   toolData: Tool;
+  routerUrlSubscription: Subscription;
   compressSelectData: SelectInputData = [
     {
       id: 'default',
@@ -31,21 +34,23 @@ export class PdfCompressComponent implements OnInit {
     },
   ];
 
-  constructor(private location: Location, private toolsService: ToolsService) {}
+  constructor(
+    private toolsService: ToolsService,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
-    const routeState = this.location.getState() as {
-      [props: string]: any;
-      toolId: string;
-    };
-    const { toolId } = routeState;
-    if (toolId) this.toolData = this.toolsService.toolsMap[toolId];
-    if (this.toolData?.relatedTools?.tools?.length == 0) {
-      this.toolsService.calculateRelatedTools(this.toolData);
-    }
+    this.routerUrlSubscription = this.route.url.subscribe((url) => {
+      const toolId = getToolIdFromUrl(url);
+      if (toolId) this.toolData = this.toolsService.getTool(toolId);
+      // calculate related tools
+      if (!this.toolData?.hasRelatedTools()) {
+        this.toolsService.calculateRelatedTools(this.toolData);
+      }
+    });
   }
 
-  hasRelatedTools() {
-    return this.toolData?.relatedTools?.tools?.length;
+  ngOnDestroy() {
+    if (this.routerUrlSubscription) this.routerUrlSubscription.unsubscribe();
   }
 }

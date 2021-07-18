@@ -18,6 +18,7 @@ export class AppComponent implements OnInit {
     this.toolsService.loadToolsData().subscribe(
       (status) => {
         // TODO:do something with status
+        // console.log(this.toolsService);
       },
       (err) => {
         // FIXME: handle errors

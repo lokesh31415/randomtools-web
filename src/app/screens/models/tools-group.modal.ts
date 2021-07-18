@@ -7,7 +7,7 @@ export class ToolsGroup {
   // to display in UI.
   label: string;
   // holds ID of tools which comes under this group.
-  tools: string[] = [];
+  tools: Set<string> = new Set();
 
   /**
    * @param _id should be unique among groups.
