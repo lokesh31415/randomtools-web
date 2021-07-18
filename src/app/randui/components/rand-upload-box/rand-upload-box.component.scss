@@ -1,0 +1,31 @@
+@use '../../global/rand-mixins.scss' as mixins;
+
+.upload-area {
+  width: 100%;
+  height: 45vh;
+  min-height: 30rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  & > * {
+    margin-bottom: 2rem;
+  }
+
+  border: 1px solid var(--border-color);
+  box-shadow: inset 4px 4px 4px rgba(0, 0, 0, 0.25),
+    inset -4px -4px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+
+  .upload-button {
+    font-size: 2rem;
+    color: var(--text-dark-btn-color);
+  }
+
+  .upload-text {
+    font-size: 1.5rem;
+  }
+}
+
+@include mixins.upload-area-colorscheme();

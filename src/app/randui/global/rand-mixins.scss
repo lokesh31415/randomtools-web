@@ -1,3 +1,51 @@
+// generic mixins
+// global colorscheme specific classes
+@mixin colorscheme-classes(
+  $schemes: (
+    "primary",
+    "secondary",
+    "accent",
+    "danger",
+  )
+) {
+  @each $scheme in $schemes {
+    .rand-#{$scheme}-color {
+      color: var(--#{$scheme}-color-500);
+      &::before,
+      &::after {
+        background-color: var(--#{$scheme}-color-600);
+      }
+    }
+    .rand-#{$scheme}-background-color {
+      background-color: var(--#{$scheme}-color-500);
+    }
+  }
+}
+
+// gradient background
+@mixin rand-gradient-bg($startColor, $endColor, $direction) {
+  background: $startColor;
+  background: -moz-linear-gradient(
+    $direction,
+    $startColor 0%,
+    $endColor 80%,
+    $endColor 100%
+  );
+  background: -webkit-linear-gradient(
+    $direction,
+    $startColor 0%,
+    $endColor 80%,
+    $endColor 100%
+  );
+  background: linear-gradient(
+    $direction,
+    $startColor 0%,
+    $endColor 80%,
+    $endColor 100%
+  );
+}
+
+// button mixins
 @mixin oulined-button-style($color) {
   background: none;
   border: 3px solid $color;
@@ -27,6 +75,7 @@
   }
 }
 
+// Select dropdown mixins
 @mixin select-colorscheme-classes(
   $schemes: (
     "primary",
@@ -43,24 +92,27 @@
   }
 }
 
-@mixin colorscheme-classes(
+// upload box mixins
+
+// mixins
+@mixin upload-area-colorscheme(
   $schemes: (
     "primary",
     "secondary",
     "accent",
-    "danger",
   )
 ) {
   @each $scheme in $schemes {
-    .rand-#{$scheme}-color {
-      color: var(--#{$scheme}-color-500);
-      &::before,
-      &::after {
-        background-color: var(--#{$scheme}-color-600);
+    .upload-area-#{$scheme} {
+      @include rand-gradient-bg(
+        var(--#{$scheme}-color-50),
+        var(--#{$scheme}-color-100),
+        180deg
+      );
+
+      .upload-text {
+        color: var(--#{$scheme}-color-500);
       }
-    }
-    .rand-#{$scheme}-background-color {
-      background-color: var(--#{$scheme}-color-500);
     }
   }
 }
