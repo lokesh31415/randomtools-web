@@ -1,1 +1,30 @@
-<p>image-compress works!</p>
+<div class="page-grid image-compress">
+  <app-header class="header" page="others" color="accent"></app-header>
+  <main class="page-content image-compress__main">
+    <section class="section-compress">
+      <div class="title">Compress Image</div>
+      <rand-upload-box color="secondary"></rand-upload-box>
+      <div class="compress-actions">
+        <div class="compress-quality">
+          <rand-select
+            [data]="compressSelectData"
+            [selectedItemIdx]="0"
+            [color]="'secondary'"
+          ></rand-select>
+        </div>
+        <div class="action-buttons">
+          <rand-button rand-outlined class="compress-button" color="secondary"
+            >Compress</rand-button
+          >
+          <rand-button rand-outlined class="cancel-button" color="danger"
+            >Cancel</rand-button
+          >
+        </div>
+      </div>
+    </section>
+    <section class="section-related-tools" *ngIf="toolData?.hasRelatedTools()">
+      <app-tools-group [group]="toolData.relatedTools"></app-tools-group>
+    </section>
+  </main>
+  <app-footer color="accent" class="footer"></app-footer>
+</div>

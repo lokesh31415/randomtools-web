@@ -7,6 +7,7 @@
 @use "./base/typography";
 @use "./base/animations";
 @use "./layout";
+@use "./pages/index" as *;
 
 @include mixins.generate_theme_classes(palattes.$themes);
 @include mixins.generate-gradient-classes(primary, secondary, accent, danger);

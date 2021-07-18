@@ -6,15 +6,22 @@ import {
   RandSelectComponent,
   RandUploadBoxComponent,
 } from './components';
-import { RandRoundedDirective } from './directives';
-import { RandOutlinedDirective } from './directives/rand-outlined.directive';
+import {
+  RandIconButtonDirective,
+  RandOutlinedDirective,
+  RandRoundedDirective,
+} from './directives';
 
 const COMPONENTS = [
   RandButtonComponent,
   RandSelectComponent,
   RandUploadBoxComponent,
 ];
-const DIRECTIVES = [RandRoundedDirective, RandOutlinedDirective];
+const DIRECTIVES = [
+  RandRoundedDirective,
+  RandOutlinedDirective,
+  RandIconButtonDirective,
+];
 
 @NgModule({
   imports: [BrowserModule, FormsModule],

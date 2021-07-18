@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Theme, ThemeService } from 'src/app/core/services/theme.service';
 import { NavItem } from '../../interfaces';
 import { ColorScheme, COLOR_SCHEMES } from '../../type';
 
@@ -10,6 +11,8 @@ import { ColorScheme, COLOR_SCHEMES } from '../../type';
 export class HeaderComponent implements OnInit {
   @Input('page') page: 'home' | 'others' = 'home';
   @Input('color') colorScheme: ColorScheme = 'primary';
+
+  activeTheme: Theme;
 
   landingPageRoute = '/landing-page';
   title = 'RandomTools';
@@ -24,9 +27,11 @@ export class HeaderComponent implements OnInit {
     { label: 'Developers', id: 'developers' },
   ];
 
-  constructor() {}
+  constructor(private themeService: ThemeService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.activeTheme = this.themeService.getActiveTheme();
+  }
 
   onNavItemClick(item: NavItem) {}
 
@@ -44,6 +49,11 @@ export class HeaderComponent implements OnInit {
     }
     if (this.page !== 'home') return { fill: `url(#g-${this.colorScheme})` };
     return {};
+  }
+
+  changeTheme() {
+    this.activeTheme = this.activeTheme === 'light' ? 'dark' : 'light';
+    this.themeService.setTheme(this.activeTheme);
   }
 
   onLogin() {}

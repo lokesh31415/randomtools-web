@@ -1,7 +1,17 @@
 @use './rand-mixins.scss' as mixins;
 
-.rand-rounded {
-  border-radius: 10rem !important;
+.rand-button.rand-rounded {
+  border-radius: 10rem;
+}
+
+.rand-button.rand-icon-button {
+  &,
+  &:visited,
+  &:link {
+    padding: 0.75rem;
+    border-radius: 10rem;
+    background: none;
+  }
 }
 
 @include mixins.colorscheme-classes();

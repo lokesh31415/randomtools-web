@@ -16,6 +16,13 @@
     height: 65%;
     color: var(--text-black-color);
   }
+
+  &__actions {
+    width: 25%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }
 
 // other pages header styles
@@ -58,7 +65,7 @@ svg.header-background {
 ul.nav {
   list-style: none;
   li {
-    font-size: var(--font-size-paragraph-1);
+    font-size: calc(var(--font-size-paragraph-2) + 1px);
     font-weight: 600;
     display: inline;
     padding: 0.5rem 1rem;
@@ -79,8 +86,11 @@ ul.nav {
 }
 
 .login-btn {
-  width: 25%;
-  text-align: center;
   font-size: 1.5rem;
   color: var(--text-dark-btn-color);
+}
+
+.theme-btn {
+  margin-left: 1rem;
+  // background-color: none;
 }

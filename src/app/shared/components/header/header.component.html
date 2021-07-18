@@ -10,10 +10,19 @@
         }}</a>
       </li>
     </ul>
-    <div class="login-btn">
-      <rand-button color="danger" rand-rounded (onClick)="onLogin()">{{
-        loginTxt
-      }}</rand-button>
+    <div class="header__actions">
+      <div class="login-btn">
+        <rand-button color="danger" rand-rounded (onClick)="onLogin()">{{
+          loginTxt
+        }}</rand-button>
+      </div>
+      <div class="theme-btn">
+        <rand-button rand-icon-button (onClick)="changeTheme()">
+          <span class="material-icons-outlined">
+            {{ activeTheme === "dark" ? "dark_mode" : "light_mode" }}
+          </span>
+        </rand-button>
+      </div>
     </div>
   </div>
 </header>

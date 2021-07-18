@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { SelectInputData } from 'src/app/randui/type';
 import { Tool } from '../../models';
 import { ToolsService } from '../../services/tools.service';
 import { getToolIdFromUrl } from '../../utils';
@@ -13,6 +14,33 @@ import { getToolIdFromUrl } from '../../utils';
 export class PdfConvertComponent implements OnInit {
   toolData: Tool;
   routerUrlSubscription: Subscription;
+  covertSelectData: SelectInputData = [
+    {
+      id: 'label',
+      label: 'Convert To',
+      disabled: true,
+    },
+    {
+      id: 'toword',
+      label: 'Word',
+    },
+    {
+      id: 'toppt',
+      label: 'Powerpoint',
+    },
+    {
+      id: 'tojpg',
+      label: 'JPG',
+    },
+    {
+      id: 'topng',
+      label: 'PNG',
+    },
+    {
+      id: 'tohtml',
+      label: 'Html',
+    },
+  ];
   constructor(
     private toolsService: ToolsService,
     private route: ActivatedRoute

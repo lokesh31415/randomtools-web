@@ -1,1 +1,30 @@
-<p>pdf-convert works!</p>
+<div class="page-grid pdf-convert">
+  <app-header class="header" page="others" color="accent"></app-header>
+  <main class="page-content pdf-convert__main">
+    <section class="section-convert">
+      <div class="title">Convert PDF</div>
+      <rand-upload-box color="secondary"></rand-upload-box>
+      <div class="convert-actions">
+        <div class="convert-quality">
+          <rand-select
+            [data]="covertSelectData"
+            [selectedItemIdx]="0"
+            [color]="'secondary'"
+          ></rand-select>
+        </div>
+        <div class="action-buttons">
+          <rand-button rand-outlined class="convert-button" color="secondary"
+            >Convert</rand-button
+          >
+          <rand-button rand-outlined class="cancel-button" color="danger"
+            >Cancel</rand-button
+          >
+        </div>
+      </div>
+    </section>
+    <section class="section-related-tools" *ngIf="toolData?.hasRelatedTools()">
+      <app-tools-group [group]="toolData.relatedTools"></app-tools-group>
+    </section>
+  </main>
+  <app-footer color="accent" class="footer"></app-footer>
+</div>
